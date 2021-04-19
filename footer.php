@@ -6,7 +6,7 @@
 	<div class="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 my-5">
+				<div class="col-xs-12 mt-5 mb-3">
 					<h2>WE'D LOVE TO HEAR ABOUT YOUR PROJECT</h2>
 				</div>
 

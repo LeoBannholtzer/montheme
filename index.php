@@ -14,7 +14,7 @@ get_header();
 	<div class="header">
 		<div class="container">
 			<div class="row">
-				<h2>
+				<h2 class="animate__animated animate__zoomIn">
 					CREATIVES
 					<small>POWER BY PSDFREEBIES.COM</small>
 				</h2>
@@ -86,22 +86,34 @@ get_header();
 
 					foreach ($posts as $post) {
 						if ($i == 0) {
+							$titre_categorie = "";
+							$categories = get_the_category($post->ID);
+							foreach ($categories as $categorie) {
+								if ($categorie->name != "Non classé") {
+									$titre_categorie .= $categorie->name." ";
+								}
+							}						
 							?>
 								<!-- PARTIE 1 -->
-								<div class="col-sm-6 bg-dark text-white py-5">
-									<div class="col-sm-8 offset-sm-4">
+								<div id="div_text_article1" class="col-sm-6 bg-dark text-white">
+									<div class="col-sm-8 offset-sm-4 animate__animated animate__fadeInLeft">
+										<br />
 										<?php
 											$date = DateTime::createFromFormat('Y-m-d H:i:s', $post->post_date);
 											$mois = $date->format('M');
 											$jour = $date->format('d');
 											$annee = $date->format('Y');
-											echo "<p class='text-muted'>".$mois." ".$jour.", ".$annee." | In Culture</p>";
-
+											$string = "<p class='text-muted'>".$mois." ".$jour.", ".$annee;
+											if ($titre_categorie != "") {
+												$string .= " | ".$titre_categorie;
+											}
+											$string .= "</p>";
+											echo $string;
 											$link = get_site_url()."/";
 											$link .= $annee."/".$date->format('m')."/".$jour."/".$post->post_name;
 										?>
-										<h4 class="text-uppercase"><a class="btn btn-outline-light" href="<?php echo $link ?>"><?php echo $post->post_title ?></a></h4>
-										<p class="text-muted" style="font-size:10px;"><?php $content = get_string_between($post->post_content, '<!-- wp:paragraph -->', '<!-- /wp:paragraph -->'); $content = strlen($content) > 100 ? substr($content,0,100)."..." : $content ;echo $content; ?></p>
+										<h4 class="text-uppercase"><a class="text-white" href="<?php echo $link ?>"><?php echo $post->post_title ?></a></h4>
+										<?php $content = get_string_between($post->post_content, '<!-- wp:paragraph -->', '<!-- /wp:paragraph -->'); $content = str_replace("<p>", "", $content); $content = str_replace("</p>", "", $content); $content = strlen($content) > 100 ? substr($content,0,100)."..." : $content ;echo "<p class='text-muted mt-2' style='font-size:10px;'>".$content."</p>" ?>
 									</div>
 								</div>
 								<div class="col-sm-6" style="padding-left: 0px !important;padding-right: 0px !important;">
@@ -117,12 +129,19 @@ get_header();
 											$src = $img->getAttribute("src");
 										}
 										if ($src != null) {
-											echo "<img src='".$src."'>";
+											echo "<img id='img_article1' src='".$src."'>";
 										}
 									?>
 								</div>
 							<?php
 						} else {
+							$titre_categorie = "";
+							$categories = get_the_category($post->ID);
+							foreach ($categories as $categorie) {
+								if ($categorie->name != "Non classé") {
+									$titre_categorie .= $categorie->name." ";
+								}
+							}
 							?>
 								<!-- PARTIE 2 -->
 								<div class="col-sm-6" style="padding-left: 0px !important;padding-right: 0px !important;">
@@ -138,61 +157,38 @@ get_header();
 											$src = $img->getAttribute("src");
 										}
 										if ($src != null) {
-											echo "<img src='".$src."'>";
+											echo "<img id='img_article2' src='".$src."'>";
 										}
 									?>
 								</div>
-								<div class="col-sm-6 py-5">
-									<div class="col-sm-8 offset-sm-4">
+								<div id="div_text_article2" class="col-sm-6">
+									<div class="col-sm-8 animate__animated animate__fadeInRight">
+										<br />
 										<?php
 											$date = DateTime::createFromFormat('Y-m-d H:i:s', $post->post_date);
 											$mois = $date->format('M');
 											$jour = $date->format('j');
 											$annee = $date->format('Y');
-											echo "<p class='text-muted'>".$mois." ".$jour.", ".$annee." | In Culture</p>";
-
+											$string = "<p class='text-muted'>".$mois." ".$jour.", ".$annee;
+											if ($titre_categorie != "") {
+												$string .= " | ".$titre_categorie;
+											}
+											$string .= "</p>";
+											echo $string;
 											$link = get_site_url()."/";
 											$link .= $annee."/".$date->format('m')."/".$jour."/".$post->post_name;
 										?>
-										<h4 class="text-uppercase"><a class="btn btn-outline-dark" href="<?php echo $link ?>"><?php echo $post->post_title ?></a></h4>
-										<p class="text-muted" style="font-size:10px;"><?php $content = get_string_between($post->post_content, '<!-- wp:paragraph -->', '<!-- /wp:paragraph -->'); $content = strlen($content) > 100 ? substr($content,0,100)."..." : $content ;echo $content; ?></p>
+										<h4 class="text-uppercase"><a class="text-dark" href="<?php echo $link ?>"><?php echo $post->post_title ?></a></h4>
+										<?php $content = get_string_between($post->post_content, '<!-- wp:paragraph -->', '<!-- /wp:paragraph -->'); $content = str_replace("<p>", "", $content); $content = str_replace("</p>", "", $content); $content = strlen($content) > 100 ? substr($content,0,100)."..." : $content ;echo "<p class='text-muted mt-2' style='font-size:10px;'>".$content."</p>" ?>
 									</div>
 								</div>
 							<?php
 						}
 						$i++;
 					}
-
-
-					/*
-					get_template_part('view/last-two-articles', 'posts', array(
-						'query' => $query,
-					));
-					*/
 				}
 				add_action( 'example_action', 'example_callback', 10);
 				do_action('example_action');
-
-
-				/*
-				if ( have_posts() ) :
-					if ( is_home() && ! is_front_page() ) :
-						?>
-						<header>
-							<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-						</header>
-						<?php
-					endif;
-
-					while ( have_posts() ) :
-						the_post();
-						get_template_part( 'template-parts/content', get_post_type() );
-					endwhile;
-					the_posts_navigation();
-				else :
-					get_template_part( 'template-parts/content', 'none' );
-				endif;
-				*/
 			?>
 		</div>
 	</main>
@@ -225,6 +221,20 @@ get_header();
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$(window).resize(function() {
+			if ($(window).width() > 576) {
+				var height_img_article1 = $("#img_article1").height();
+				$("#div_text_article1").height(height_img_article1);
+				var height_img_article2 = $("#img_article2").height();
+				$("#div_text_article2").height(height_img_article2);
+			} else {
+				$("#div_text_article1").height(height_img_article1);
+				$("#div_text_article1").height(height_img_article1);
+			}
+		});
+	</script>
 <?php
 	get_sidebar();
 	get_footer();

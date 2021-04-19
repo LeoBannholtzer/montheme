@@ -1,9 +1,20 @@
 /*	MES AJUSTEMENTS */
-a.btn-outline-dark:visited {
-	color:#212529;
+a.text-dark:visited {
+	color:#212529 !important;
+	text-decoration: none !important;
 }
-a.btn-outline-light:visited {
-	color:#f8f9fa;
+a.text-white:visited {
+	color:#f8f9fa !important;
+	text-decoration: none !important;
+}
+
+a:visited {
+	text-decoration:none !important;
+}
+
+.site a {
+	color: #4169e1 !important;
+	text-decoration: none !important;
 }
 
 .display-5 {
@@ -60,6 +71,10 @@ a.btn-outline-light:visited {
     .header h2 {
         font-size: 100px;
     }
+	.header h2 small {
+        font-size: 25px;
+        line-height: 50px;
+    }
 }
 @media (min-width: 768px) {
     .header h2 {
@@ -69,12 +84,6 @@ a.btn-outline-light:visited {
 @media (min-width: 992px) {
     .header h2 {
         font-size: 150px;
-    }
-}
-@media (min-width: 601px) {
-    .header h2 small {
-        font-size: 25px;
-        line-height: 50px;
     }
 }
 
@@ -198,6 +207,8 @@ html {
 }
 
 body {
+	font-family: 'Roboto' !important;
+	font-weight: 200 !important;
 	margin: 0;
 }
 
@@ -3137,9 +3148,9 @@ progress {
 .form-control {
 	display: block;
 	width: 100%;
-	padding: 0.375rem 0.75rem;
+	padding: 0.375rem 0.75rem !important;
 	font-size: 1rem;
-	font-weight: 400;
+	font-weight: 200;
 	line-height: 1.5;
 	color: #212529;
 	background-color: #fff;
@@ -3150,6 +3161,19 @@ progress {
 	appearance: none;
 	border-radius: 0.25rem;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input.form-control, textarea.form-control {
+	font-size: 0.7em !important;
+}
+
+
+input.form-control {
+    line-height: 2.2 !important;
+}
+
+::placeholder {
+	color: white !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

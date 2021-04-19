@@ -11,7 +11,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'montheme' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'Aucun article trouvé', 'montheme' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -34,14 +34,14 @@
 		elseif ( is_search() ) :
 			?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'montheme' ); ?></p>
+			<p><?php esc_html_e( 'Désolé, mais rien ne correspond à vos termes de recherche. Veuillez réessayer avec d\'autres mots-clés.', 'montheme' ); ?></p>
 			<?php
 			get_search_form();
 
 		else :
 			?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'montheme' ); ?></p>
+			<p><?php esc_html_e( 'Il semble que nous ne puissions pas trouver ce que vous cherchez. Peut-être qu\'une recherche peut vous aider.', 'montheme' ); ?></p>
 			<?php
 			get_search_form();
 

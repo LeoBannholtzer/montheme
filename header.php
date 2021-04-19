@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/fontawesome.min.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/hover.min.css">
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/animate.min.css">
 
 	<?php wp_head(); ?>
 	<script src="<?php bloginfo('template_directory'); ?>/js/jquery.min.js"></script>

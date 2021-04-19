@@ -14,11 +14,11 @@ get_header();
 
 		<section class="error-404 not-found">
 			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'montheme' ); ?></h1>
+				<h1 class="page-title"><?php esc_html_e( 'Oups ! Cette page n\'existe pas.', 'montheme' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'montheme' ); ?></p>
+				<p><?php esc_html_e( 'Il semble que rien n\'ait été trouvé à cet endroit. Essayez peut-être l\'un des liens ci-dessous ou une recherche ?', 'montheme' ); ?></p>
 
 					<?php
 					get_search_form();
@@ -27,7 +27,7 @@ get_header();
 					?>
 
 					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'montheme' ); ?></h2>
+						<h2 class="widget-title"><?php esc_html_e( 'Les catégories les plus utilisées', 'montheme' ); ?></h2>
 						<ul>
 							<?php
 							wp_list_categories(
