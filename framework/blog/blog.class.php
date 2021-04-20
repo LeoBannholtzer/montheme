@@ -1,6 +1,4 @@
-<?php
-
-namespace MonTheme;
+<?php namespace MonTheme;
 
 use \MonTheme\MonThemeBlogModel;
 
@@ -15,6 +13,7 @@ class MonThemeBlog {
 
     public function setActions()
     {
+        add_action('test', array($this, 'test'), 10);
         add_action('last_two_articles', array($this, 'getLastTwoArticles'), 10);
     }
 
@@ -33,8 +32,9 @@ class MonThemeBlog {
         return get_fields('option');
     }
 
+
     public function getLastTwoArticles() {
-        $model = new namespace\MonThemeBlog();
+        $model = new namespace\MonThemeBlogModel();
         $query = $model->getLastTwoArticles();
 
         get_template_part('view/last-two-articles', 'posts', array(
@@ -43,6 +43,6 @@ class MonThemeBlog {
     }
 }
 
-global $leo_blog;
-$leo_blog = new namespace\MonThemeBlog();
-$leo_blog->setActions();
+global $monblog;
+$monblog = new namespace\MonThemeBlog();
+$monblog->setActions();
